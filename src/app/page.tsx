@@ -14,7 +14,7 @@ export default async function Home() {
         </div>
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Find Your Perfect ☕
+            Find Your Ideal ☕
           </h1>
           <p className="text-xl text-coffee-200 max-w-2xl mx-auto mb-8">
             Tell us about your taste preferences and our AI will match you with the perfect beans from artisan roasters.
