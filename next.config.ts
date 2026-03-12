@@ -6,10 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Ensure CSS is inlined
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
+  // Set base path for Netlify
+  basePath: '',
 };
 
 export default nextConfig;

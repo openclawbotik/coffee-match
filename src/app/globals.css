@@ -17,7 +17,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-outfit);
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -35,7 +34,6 @@ h1, h2, h3, h4, h5, h6 {
   background: #a0895c;
 }
 
-/* Smooth animations */
 * {
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
