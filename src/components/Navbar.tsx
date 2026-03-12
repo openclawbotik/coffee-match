@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAuth } from "@convexjs/auth";
 
 export function Navbar() {
   const pathname = usePathname();
-  const { user, isLoading } = useAuth();
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -15,13 +13,13 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-coffee-100">
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-amber-100">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <span className="text-2xl">☕</span>
-            <span className="text-xl font-bold text-espresso">Coffee Match</span>
+            <span className="text-xl font-bold text-amber-900">Coffee Match</span>
           </Link>
 
           {/* Nav Links */}
@@ -43,39 +41,20 @@ export function Navbar() {
 
           {/* Auth Buttons */}
           <div className="flex items-center gap-4">
-            {isLoading ? (
-              <div className="w-20 h-8 bg-gray-200 animate-pulse rounded-full" />
-            ) : user ? (
-              <div className="flex items-center gap-4">
-                <Link
-                  href="/favorites"
-                  className="text-gray-600 hover:text-amber-700 font-medium"
-                >
-                  Favorites
-                </Link>
-                <Link
-                  href="/dashboard"
-                  className="px-4 py-2 bg-amber-600 hover:bg-amber-500 text-white font-medium rounded-full transition-colors"
-                >
-                  Dashboard
-                </Link>
-              </div>
-            ) : (
-              <div className="flex items-center gap-3">
-                <Link
-                  href="/login"
-                  className="text-gray-600 hover:text-amber-700 font-medium"
-                >
-                  Log in
-                </Link>
-                <Link
-                  href="/signup"
-                  className="px-4 py-2 bg-espresso hover:bg-coffee-800 text-white font-medium rounded-full transition-colors"
-                >
-                  Sign up
-                </Link>
-              </div>
-            )}
+            <div className="flex items-center gap-3">
+              <Link
+                href="/login"
+                className="text-gray-600 hover:text-amber-700 font-medium"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/signup"
+                className="px-4 py-2 bg-amber-900 hover:bg-amber-800 text-white font-medium rounded-full transition-colors"
+              >
+                Sign up
+              </Link>
+            </div>
           </div>
         </div>
       </div>

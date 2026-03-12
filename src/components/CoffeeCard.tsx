@@ -1,10 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-import { useMutation, useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
-import { useAuth } from "@convexjs/auth";
 
 interface CoffeeCardProps {
   coffee: {
@@ -23,29 +19,22 @@ interface CoffeeCardProps {
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
-  const { user } = useAuth();
   const [isFavorited, setIsFavorited] = useState(false);
-  const addFavorite = useMutation(api.coffees.addFavorite);
 
-  const handleFavorite = async () => {
-    if (!user) {
-      alert("Please log in to save favorites");
-      return;
-    }
-    await addFavorite({ userId: user._id, coffeeId: coffee._id });
-    setIsFavorited(true);
+  const handleFavorite = () => {
+    alert("Login to save favorites!");
   };
 
   const roastColors: Record<string, string> = {
     light: "bg-yellow-100 text-yellow-800",
     medium: "bg-orange-100 text-orange-800",
-    dark: "bg-coffee-100 text-coffee-800",
+    dark: "bg-amber-900 text-amber-100",
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-coffee-100 overflow-hidden hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden hover:shadow-md transition-shadow">
       {/* Image Placeholder */}
-      <div className="h-40 bg-gradient-to-br from-coffee-200 to-coffee-300 flex items-center justify-center">
+      <div className="h-40 bg-gradient-to-br from-amber-200 to-amber-300 flex items-center justify-center">
         <span className="text-6xl">☕</span>
       </div>
 
@@ -57,15 +46,15 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
               roastColors[coffee.roast] || "bg-gray-100 text-gray-800"
             }`}
           >
-            {coffee.roast.charAt(0).toUpperCase() + coffee.roast.slice(1)} Roast
+            {coffee.roast?.charAt(0).toUpperCase() || 'M'}edium Roast
           </span>
-          <span className="px-2 py-1 bg-coffee-50 text-coffee-700 rounded-full text-xs font-medium">
-            {coffee.origin}
+          <span className="px-2 py-1 bg-amber-50 text-amber-700 rounded-full text-xs font-medium">
+            {coffee.origin || 'Blend'}
           </span>
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-espresso mb-1">{coffee.name}</h3>
+        <h3 className="text-lg font-bold text-amber-900 mb-1">{coffee.name}</h3>
         
         {/* Roaster */}
         {coffee.roaster && (
@@ -76,13 +65,13 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
 
         {/* Flavors */}
         <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-          {coffee.flavors}
+          {coffee.flavors || 'Rich and balanced'}
         </p>
 
         {/* Price & Actions */}
-        <div className="flex items-center justify-between pt-3 border-t border-coffee-100">
-          <span className="text-xl font-bold text-espresso">
-            ${coffee.price}
+        <div className="flex items-center justify-between pt-3 border-t border-amber-100">
+          <span className="text-xl font-bold text-amber-900">
+            ${coffee.price || 19}
             <span className="text-sm font-normal text-gray-500">/lb</span>
           </span>
           <button
@@ -90,7 +79,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
             className={`p-2 rounded-full transition-colors ${
               isFavorited
                 ? "bg-red-100 text-red-500"
-                : "bg-coffee-50 text-coffee-400 hover:bg-red-50 hover:text-red-400"
+                : "bg-amber-50 text-amber-400 hover:bg-red-50 hover:text-red-400"
             }`}
           >
             {isFavorited ? "❤️" : "🤍"}
