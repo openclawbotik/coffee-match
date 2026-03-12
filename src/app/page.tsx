@@ -180,6 +180,35 @@ export default async function Home() {
           </a>
         </div>
       </section>
+
+      {/* Contact Us */}
+      <section id="contact" className="py-16 bg-amber-900 text-amber-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Contact Us
+          </h2>
+          <p className="text-center text-amber-200 mb-8 max-w-2xl mx-auto">
+            Have questions? Want to partner with us? We'd love to hear from you.
+          </p>
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="p-6">
+              <div className="text-3xl mb-3">📧</div>
+              <h3 className="font-semibold mb-2">Email</h3>
+              <p className="text-amber-200">hello@coffeematch.app</p>
+            </div>
+            <div className="p-6">
+              <div className="text-3xl mb-3">📍</div>
+              <h3 className="font-semibold mb-2">Location</h3>
+              <p className="text-amber-200">Portland, OR</p>
+            </div>
+            <div className="p-6">
+              <div className="text-3xl mb-3">📱</div>
+              <h3 className="font-semibold mb-2">Social</h3>
+              <p className="text-amber-200">@coffeematch</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

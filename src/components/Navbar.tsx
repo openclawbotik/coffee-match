@@ -10,6 +10,7 @@ export function Navbar() {
     { href: "/", label: "Home" },
     { href: "/coffees", label: "Coffees" },
     { href: "/roasters", label: "Roasters" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
